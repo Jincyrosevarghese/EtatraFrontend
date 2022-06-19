@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import serverpath from 'src/baseservice';
 
 
 @Component({
@@ -70,7 +71,7 @@ export class SignupcomponentComponent implements OnInit {
     }
 
     else {
-      this.http.post('http://localhost:3000/signup', { firstname: this.firstname, lastname: this.lastname, email: this.email, mobilenumber: this.mobilenumber, dob: this.dob, password: this.password, roleId: this.roleId, username: this.email }).subscribe((response) => {
+      this.http.post(`${serverpath}/signup`, { firstname: this.firstname, lastname: this.lastname, email: this.email, mobilenumber: this.mobilenumber, dob: this.dob, password: this.password, roleId: this.roleId, username: this.email }).subscribe((response) => {
         alert(JSON.stringify(response));
         if (response) {
           localStorage.setItem("authData", JSON.stringify(response));

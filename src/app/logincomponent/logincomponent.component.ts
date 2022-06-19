@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import serverpath from 'src/baseservice';
 
 @Component({
   selector: 'app-logincomponent',
@@ -44,7 +45,7 @@ export class LogincomponentComponent implements OnInit {
       return;
     }
     else {
-      this.http.post('http://localhost:3000/login', { username: this.username, password: this.password }).subscribe((response) => {
+      this.http.post(`${serverpath}/login`, { username: this.username, password: this.password }).subscribe((response) => {
         //alert(JSON.stringify(response));
         if (response) {
           localStorage.setItem("authData", JSON.stringify(response));

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
+import serverpath from 'src/baseservice';
 // import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 // import { NewTaskDialogComponent } from '../new-task-dialog/new-task-dialog.component';
 
@@ -58,7 +59,7 @@ export class AdmincomponentComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/admin').subscribe((response) => {
+    this.http.get(`${serverpath}/admin`).subscribe((response) => {
       //console.log(JSON.stringify(response));
       //console.log(response);
       // this.adminusers=[...JSON.parse(JSON.stringify(response)).response]
